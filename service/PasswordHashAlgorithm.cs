@@ -1,4 +1,5 @@
 using System.Security.Cryptography;
+using service;
 
 namespace Service;
 
@@ -12,6 +13,8 @@ public abstract class PasswordHashAlgorithm
         {
             case Argon2idPasswordHashAlgorithm.Name:
                 return new Argon2idPasswordHashAlgorithm();
+            case InsecurePasswordHashAlgorithm.Name: // <--- add this
+                return new InsecurePasswordHashAlgorithm(); // <--- and this
             default:
                 throw new NotImplementedException();
         }
