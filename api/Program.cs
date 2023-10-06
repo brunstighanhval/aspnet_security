@@ -26,8 +26,9 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    
 }
-
+/*
 app.UseCors(options =>
 {
     options.SetIsOriginAllowed(origin => true)
@@ -35,7 +36,9 @@ app.UseCors(options =>
         .AllowAnyHeader()
         .AllowCredentials();
 });
+*/
 
+app.UseSecurityHeaders();
 app.UseSpaStaticFiles();
 app.UseSpa(conf => { conf.Options.SourcePath = frontEndRelativePath; });
 

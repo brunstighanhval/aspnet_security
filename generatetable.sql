@@ -1,18 +1,18 @@
 PRAGMA foreign_keys = ON;
 
 create table users (
-    id integer primary key autoincrement,
-    full_name VARCHAR(50) NOT NULL ,
-    email VARCHAR(50) NOT NULL UNIQUE,
-    avatar_url VARCHAR(100) null 
+                       id integer primary key autoincrement,
+                       full_name VARCHAR(50) NOT NULL ,
+                       email VARCHAR(50) NOT NULL UNIQUE,
+                       avatar_url VARCHAR(100) null
 );
 
 create table password_hash (
-    user_id integer,
-    hash VARCHAR(350) NOT NULL ,
-    salt VARCHAR(180) NOT NULL ,
-    algorithm VARCHAR(12) NOT NULL ,
-    FOREIGN KEY(user_id) REFERENCES users(id)
+                               user_id integer,
+                               hash VARCHAR(350) NOT NULL ,
+                               salt VARCHAR(180) NOT NULL ,
+                               algorithm VARCHAR(12) NOT NULL ,
+                               FOREIGN KEY(user_id) REFERENCES users(id)
 );
 
 INSERT INTO users (full_name, email, avatar_url) VALUES ('Mercie De Malchar', 'mde0@salon.com', 'https://robohash.org/idmodiut.png?size=50x50&set=set1');
