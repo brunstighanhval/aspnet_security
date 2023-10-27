@@ -1,3 +1,4 @@
+using api.Filters;
 using api.TransferModels;
 using Microsoft.AspNetCore.Mvc;
 using service;
@@ -20,6 +21,18 @@ public class UserController : ControllerBase
         {
             MessageToClient = "Successfully fetched",
             ResponseData = _service.GetAll()
+        };
+    }
+    [RequireAuthentication]
+    [HttpGet]
+    [Route("/api/account/whoami")]
+    public ResponseDto WhoAmI()
+    {
+        var data = HttpContext.GetSessionData();
+        var user = _service.Get(data);
+        return new ResponseDto
+        {
+            ResponseData = user
         };
     }
 }
